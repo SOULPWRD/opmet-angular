@@ -1,0 +1,17 @@
+
+<div>
+    <p>Message types</p>
+    <p>Airports</p>
+    <p>Countries</p>
+</div>
+<form [formGroup]="opmetForm">
+    <input id="metar" value="metar" type="checkbox" (change)="updateMessageType($event)">
+    <label for="metar">Metar</label>
+    <input id="sigmet" value="sigmet" type="checkbox" (change)="updateMessageType($event)">
+    <label for="sigmet">Sigmet</label>
+    <input id="taf" value="taf_longtaf" type="checkbox" (change)="updateMessageType($event)">
+    <label for="taf">Taf</label>
+    <input type="text" id="stations" formControlName="stations" />
+    <input type="text" id="countries" formControlName="countries" />
+    <input type="button" (click)="fetch()" value="Create Briefing">
+</form>

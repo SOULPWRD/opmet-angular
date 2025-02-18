@@ -1,0 +1,6 @@
+:host {
+    padding: 1em;
+    display: block;
+    border: 1px solid black;
+    background-color: tomato;
+}

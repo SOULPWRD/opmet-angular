@@ -1,0 +1,25 @@
+@if (error) {
+    <error-ui [code]="error.code" [message]="error.message"></error-ui>
+}
+
+@if (results?.length) {
+    <table>
+        @for (entry of results; track $index) {
+            @let key = entry[0];
+            @let rows = entry[1];
+            <tr>
+                <th>{{key}}</th>
+            </tr>
+            
+            @for (row of rows; track $index) {
+                <tr>
+                    @for (column of row; track $index) {
+                        <td [innerHTML]="column"></td>
+                    }
+                </tr>
+            }
+        }   
+    </table>
+} @else if (results !== undefined) {
+    <no-results-ui></no-results-ui>
+}
