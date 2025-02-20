@@ -1,3 +1,6 @@
+// table/error.spec.ts
+// Martin Pravda
+
 import {TestBed} from "@angular/core/testing";
 import {ErrorComponent} from "./error";
 

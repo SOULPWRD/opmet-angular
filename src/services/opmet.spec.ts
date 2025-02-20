@@ -1,3 +1,6 @@
+// services/opmet.spec.ts
+// Martin Pravda
+
 import {TestBed} from "@angular/core/testing";
 import {provideHttpClient} from "@angular/common/http";
 import {

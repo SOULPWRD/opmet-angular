@@ -1,4 +1,4 @@
-// app.ts
+// app/app.ts
 // Martin Pravda
 
 // An app entry point file

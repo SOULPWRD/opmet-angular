@@ -1,3 +1,6 @@
+// utils.spec.ts
+// Martin Pravda
+
 import {pick, formatTimestamp} from "./utils";
 
 const o = {a: 1, b: 2, c: 3, d: 4};

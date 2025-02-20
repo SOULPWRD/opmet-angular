@@ -24,7 +24,7 @@ export const pick = <T>(
   );
 };
 
-// Format timestamp into the format dd.mm.yyyy hh:mm:ss
+// Formats the timestamp into the given format dd.mm.yyyy hh:mm:ss
 export const formatTimestamp = (timestamp: string) => {
   const [date, time] = timestamp.split("T");
   const europeanDateFormat = date.split("-").reverse().join(".");

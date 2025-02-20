@@ -1,3 +1,6 @@
+// table/no-results.spec.ts
+// Martin Pravda
+
 import {TestBed} from "@angular/core/testing";
 import {NoResultsComponent} from "./no-results";
 
