@@ -10,7 +10,7 @@ import {Component, inject} from "@angular/core";
 import {ErrorComponent} from "./error";
 import {NoResultsComponent} from "./no-results";
 import {OpmetService} from "../../services/opmet";
-import {pick, format_timestamp} from "../../utils";
+import {pick, formatTimestamp} from "../../utils";
 
 @Component({
   selector: "results-ui",
@@ -42,7 +42,7 @@ export class Results {
           // @ts-expect-error bad-typing
           pick<string>(obj, [
             "queryType",
-            ["reportTime", format_timestamp],
+            ["reportTime", formatTimestamp],
             "textHTML"
           ])
         )
