@@ -1,7 +1,7 @@
-export function pick<T>(
+export const pick = <T>(
   object: Record<string, T>,
   properties: string[] | [string, <T, K>(val: T) => K][]
-) {
+) => {
   return properties.reduce(
     function (o, property) {
       if (Array.isArray(property)) {
@@ -15,10 +15,10 @@ export function pick<T>(
     },
     {} as Record<string, T>
   );
-}
+};
 
-export function format_timestamp(timestamp: string) {
+export const format_timestamp = (timestamp: string) => {
   const [date, time] = timestamp.split("T");
   const european_date_format = date.split("-").reverse().join(".");
   return `${european_date_format} ${time.slice(0, -1)}`;
-}
+};
