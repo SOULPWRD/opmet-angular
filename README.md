@@ -1,6 +1,10 @@
-# Angular
+# OPMET
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.7.
+This is the implementation of the homework task for the [iblsoft.com](iblsoft.com) company.
+
+## Description
+
+The app is written in [Angular v19](https://v19.angular.dev/). It is a "mirror" of [the vanilla implementation](https://github.com/SOULPWRD/opmet-vanilla). Enjoy.
 
 ## Development server
 
