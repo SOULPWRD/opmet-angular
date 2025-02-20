@@ -1,3 +1,8 @@
+// types.ts
+// Martin Pravda
+
+// Opmet service type declarations
+
 export type Param = {
   id: string;
   reportTypes: string[];

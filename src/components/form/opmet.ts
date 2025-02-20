@@ -1,3 +1,9 @@
+// form/opmet.ts
+// Martin Pravda
+
+// A form for manipulating user inputs
+// It uses a reactive form builder
+
 import type {Param} from "../../services/types";
 import type {FormArray} from "@angular/forms";
 import {Component, inject} from "@angular/core";

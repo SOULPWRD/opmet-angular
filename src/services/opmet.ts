@@ -1,9 +1,15 @@
+// services/opmet.ts
+// Martin Pravda
+
+// Opmet service uses an observable for observing new data coming from the JSON-RPC call
+// It is used for notifying the result component and updating it accordingly
+
 import type {Payload, Response, Param} from "./types";
 
 import {inject, Injectable} from "@angular/core";
+import {HttpClient} from "@angular/common/http";
 import {Subject} from "rxjs";
 import {config} from "../config";
-import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: "root"

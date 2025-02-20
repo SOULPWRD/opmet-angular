@@ -1,3 +1,9 @@
+// table/results.js
+// Martin Pravda
+
+// A main results component for displaying tabular data
+// It subscribes from the opmet service in order to update its view
+
 import type {Response} from "../../services/types";
 
 import {Component, inject} from "@angular/core";

@@ -1,3 +1,8 @@
+// config.js
+// Martin Pravda
+
+// A simple config file
+
 type Config = {
   url: string;
 };

@@ -1,3 +1,8 @@
+// table/no-results.ts
+// Martin Pravda
+
+// Displays a simple no results notification
+
 import {Component} from "@angular/core";
 
 @Component({
