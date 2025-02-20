@@ -4,12 +4,12 @@
 // An app entry point file
 
 import {Component} from "@angular/core";
-import {OpmetForm} from "../form/opmet";
-import {Results} from "../table/results";
+import {OpmetFormComponent} from "../form/opmet";
+import {ResultsComponent} from "../table/results";
 
 @Component({
   selector: "app-root",
-  imports: [OpmetForm, Results],
+  imports: [OpmetFormComponent, ResultsComponent],
   templateUrl: "./app.html",
   styleUrl: "./app.css"
 })

@@ -9,7 +9,7 @@ import type {Payload, Response, Param} from "./types";
 import {inject, Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Subject} from "rxjs";
-import {config} from "../config";
+import {rpcUrl} from "../config";
 
 @Injectable({
   providedIn: "root"
@@ -30,7 +30,7 @@ export class OpmetService {
         }
       ]
     };
-    return this.http.post(config.url, payload).subscribe((response) => {
+    return this.http.post(rpcUrl, payload).subscribe((response) => {
       this.opmet.next(response as Response);
     });
   }

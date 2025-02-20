@@ -17,7 +17,7 @@ import {ReactiveFormsModule} from "@angular/forms";
   templateUrl: "./opmet.html",
   styleUrl: "./opmet.css"
 })
-export class OpmetForm {
+export class OpmetFormComponent {
   private formBuilder = inject(FormBuilder);
   private opmetService = inject(OpmetService);
 
@@ -52,8 +52,8 @@ export class OpmetForm {
     return {
       id: crypto.randomUUID(),
       reportTypes: values.reportTypes as string[],
-      countries: values.countries?.split(" ") || [],
-      stations: values.stations?.split(" ") || []
+      countries: values.countries?.toUpperCase().split(" ") || [],
+      stations: values.stations?.toUpperCase().split(" ") || []
     };
   }
 

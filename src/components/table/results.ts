@@ -18,7 +18,7 @@ import {pick, formatTimestamp} from "../../utils";
   templateUrl: "./results.html",
   styleUrl: "./results.css"
 })
-export class Results {
+export class ResultsComponent {
   response?: Response;
   private opmetService = inject(OpmetService);
 
