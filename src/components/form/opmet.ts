@@ -7,7 +7,12 @@
 import type {Param} from "../../services/types";
 import type {FormArray} from "@angular/forms";
 import {Component, inject} from "@angular/core";
-import {FormBuilder, FormControl} from "@angular/forms";
+import {
+  FormBuilder,
+  FormControl,
+  AbstractControl,
+  Validators
+} from "@angular/forms";
 import {OpmetService} from "../../services/opmet";
 import {ReactiveFormsModule} from "@angular/forms";
 
@@ -21,30 +26,54 @@ export class OpmetFormComponent {
   private formBuilder = inject(FormBuilder);
   private opmetService = inject(OpmetService);
 
-  opmetForm = this.formBuilder.group({
-    reportTypes: this.formBuilder.array([]),
-    countries: [""],
-    stations: [""]
-  });
+  opmetForm = this.formBuilder.group(
+    {
+      reportTypes: this.formBuilder.array([], this.minLengthArray(1)),
+      countries: [""],
+      stations: [""]
+    },
+    {validators: [this.atLeastOneRequiredValidator]}
+  );
+
+  get reportTypes() {
+    return this.opmetForm.get("reportTypes") as FormArray;
+  }
 
   updateMessageType(event: Event): void {
-    const reportTypes = this.opmetForm.get("reportTypes") as FormArray;
     const inputElement = event.target as HTMLInputElement;
     const checked = inputElement.checked;
     const value = inputElement.value.toUpperCase();
 
     if (checked) {
-      reportTypes.push(new FormControl(value));
+      this.reportTypes.push(new FormControl(value, Validators.required));
       return;
     }
 
-    const index = reportTypes.controls.findIndex(
+    const index = this.reportTypes.controls.findIndex(
       (ctrl) => ctrl.value === value
     );
 
     if (index !== -1) {
-      reportTypes.removeAt(index);
+      this.reportTypes.removeAt(index);
     }
+  }
+
+  minLengthArray(min: number) {
+    return (control: AbstractControl) => {
+      const array = control as FormArray;
+      return array.length >= min ? null : {minLengthArray: control?.touched};
+    };
+  }
+
+  atLeastOneRequiredValidator(group: AbstractControl) {
+    const countries = group.get("countries");
+    const stations = group.get("stations");
+
+    if (!countries?.value && !stations?.value) {
+      return {atLeastOneRequired: countries?.dirty || stations?.dirty};
+    }
+
+    return null;
   }
 
   get payload(): Param {
@@ -52,8 +81,9 @@ export class OpmetFormComponent {
     return {
       id: crypto.randomUUID(),
       reportTypes: values.reportTypes as string[],
-      countries: values.countries?.toUpperCase().split(" ") || [],
-      stations: values.stations?.toUpperCase().split(" ") || []
+      countries:
+        values.countries?.toUpperCase().split(" ").filter(Boolean) || [],
+      stations: values.stations?.toUpperCase().split(" ").filter(Boolean) || []
     };
   }
 

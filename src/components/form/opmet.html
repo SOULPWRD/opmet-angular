@@ -5,13 +5,20 @@
     <p>Countries</p>
 </div>
 <form [formGroup]="opmetForm">
-    <input id="metar" value="metar" type="checkbox" (change)="updateMessageType($event)">
+    <input id="metar" value="metar" type="checkbox" (blur)="reportTypes.markAllAsTouched()" (change)="updateMessageType($event)">
     <label for="metar">Metar</label>
-    <input id="sigmet" value="sigmet" type="checkbox" (change)="updateMessageType($event)">
+    <input id="sigmet" value="sigmet" type="checkbox" (blur)="reportTypes.markAllAsTouched()" (change)="updateMessageType($event)">
     <label for="sigmet">Sigmet</label>
-    <input id="taf" value="taf_longtaf" type="checkbox" (change)="updateMessageType($event)">
+    <input id="taf" value="taf_longtaf" type="checkbox" (blur)="reportTypes.markAllAsTouched()" (change)="updateMessageType($event)">
     <label for="taf">Taf</label>
+    @if (opmetForm.get("reportTypes")?.errors?.["minLengthArray"]) {
+        <p class="warning">At least one of the options has to be selected</p>
+    }
     <input type="text" id="stations" formControlName="stations" />
     <input type="text" id="countries" formControlName="countries" />
-    <input type="button" (click)="fetch()" value="Create Briefing">
+    @if (opmetForm.errors?.["atLeastOneRequired"]) {
+        <p class="warning">At least one country or airport code has to be specified</p>
+    }
+    
+    <input [disabled]="opmetForm.invalid" type="button" (click)="fetch()" value="Create Briefing">
 </form>

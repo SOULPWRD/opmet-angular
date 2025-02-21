@@ -20,3 +20,8 @@ label {
     margin-right: 10px;
     margin-left: 2px;
 }
+
+.warning {
+    background-color: tomato;
+    font-size: xx-small;
+}
