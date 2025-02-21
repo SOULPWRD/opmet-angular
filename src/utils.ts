@@ -25,11 +25,14 @@ export const pick = <T>(
 };
 
 // Formats the timestamp into the given format dd.mm.yyyy hh:mm:ss
-export const formatTimestamp = (timestamp: string) => {
-  const [date, time] = timestamp.split("T");
-  const europeanDateFormat = date.split("-").reverse().join(".");
-  return `${europeanDateFormat} ${time.slice(0, -1)}`;
-};
+export function formatTimestamp(timestamp: string) {
+  const dateObject = new Date(timestamp);
+  const date = dateObject.toLocaleDateString();
+  const time = dateObject.toLocaleTimeString();
+  const dateArr = date.split("/");
+  const slovakDateFormat = `${dateArr[1]}.${dateArr[0]}.${dateArr[2]}`;
+  return `${slovakDateFormat} ${time.split(" ").slice(0, -1)}`;
+}
 
 // create a font color tag with a specified color
 export function colorify(value: string, color: string) {
