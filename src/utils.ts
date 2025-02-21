@@ -30,3 +30,19 @@ export const formatTimestamp = (timestamp: string) => {
   const europeanDateFormat = date.split("-").reverse().join(".");
   return `${europeanDateFormat} ${time.slice(0, -1)}`;
 };
+
+// create a font color tag with a specified color
+export function colorify(value: string, color: string) {
+  return `<font color="${color}">${value}</font>`;
+}
+
+// make BKN, FEW and SCT text colorized
+export function formatText(text: string) {
+  const rx = /(BKN|FEW|SCT)(\d+)/g;
+  return text.replace(rx, function (string, _, number) {
+    if (number < 30) {
+      return colorify(string, "blue");
+    }
+    return colorify(string, "red");
+  });
+}

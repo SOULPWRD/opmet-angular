@@ -10,7 +10,7 @@ import {Component, inject} from "@angular/core";
 import {ErrorComponent} from "./error";
 import {NoResultsComponent} from "./no-results";
 import {OpmetService} from "../../services/opmet";
-import {pick, formatTimestamp} from "../../utils";
+import {pick, formatTimestamp, formatText} from "../../utils";
 
 @Component({
   selector: "results-ui",
@@ -43,7 +43,7 @@ export class ResultsComponent {
           pick<string>(obj, [
             "queryType",
             ["reportTime", formatTimestamp],
-            "textHTML"
+            ["text", formatText]
           ])
         )
       );
